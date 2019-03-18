@@ -1,6 +1,9 @@
 <template>
 <nav>
     <v-toolbar app dark class="deep-purple">
+        <v-toolbar-side-icon  @click="drawer = !drawer" class="blue--text">
+
+        </v-toolbar-side-icon>
         <v-toolbar-title>
             <span class="font-weight-light">Olu Fadipe</span>
             <span> Autoura</span>
@@ -12,12 +15,34 @@
             <v-icon right>exit_to_app</v-icon>
         </v-btn>
     </v-toolbar>
-</nav>
-</template>
+  
+    <v-navigation-drawer app v-model="drawer" class="primary">
+      <v-list>
+        <v-list-tile v-for="link in links" :key="link.text" router :to="link.route">
+          <v-list-tile-action>
+            <v-icon class="white--text">{{ link.icon }}</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title class="white--text">{{ link.text }}</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list>
+    </v-navigation-drawer>
 
+  </nav>
+</template>
 
 <script>
 export default {
-    
+  data() {
+    return {
+      drawer: false,
+      links: [
+        { icon: 'dashboard', text: 'Dashboard', route: '/' },
+        { icon: 'folder', text: 'My Projects', route: '/projects' },
+        { icon: 'person', text: 'Team', route: '/team' },
+      ]
+    }
+  }
 }
 </script>
