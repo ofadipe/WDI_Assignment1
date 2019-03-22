@@ -38,9 +38,9 @@ export default {
     return {
       drawer: false,
       links: [
-        { icon: 'dashboard', text: 'Dashboard', route: '/' },
-        { icon: 'folder', text: 'My Projects', route: '/projects' },
-        { icon: 'person', text: 'Team', route: '/team' },
+        { icon: 'home', text: 'Home', route: '/' },
+        { icon: 'accessible', text: 'Accessible Places', route: '/accessiblepoi' },
+        { icon: 'fastfood', text: 'Restaurants', route: '/restaurants' },
       ]
     }
   }
