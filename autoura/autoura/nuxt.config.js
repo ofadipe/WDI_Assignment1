@@ -35,7 +35,9 @@ export default {
   css: [
     '~/assets/style/app.styl'
   ],
-
+  env: {
+    API_KEY: process.env.API_KEY || "dd99a666aa652f5c3a84fa8c771223"
+  },
   /*
   ** Plugins to load before mounting the App
   */
@@ -55,8 +57,17 @@ export default {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+
+   
+
+   // config,headers.Authorization = 'Bearer dd99a666aa652f5c3a84fa8c771223',
   },
 
+  //export default {
+    //env: {
+  //    baseURL: process.env.BASE_URL || 'http://localhost:3000'
+  //  }
+  //}, 
   /*
   ** Build configuration
   */
