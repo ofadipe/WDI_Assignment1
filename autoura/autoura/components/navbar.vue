@@ -15,7 +15,7 @@
             <v-icon right>exit_to_app</v-icon>
         </v-btn>
     </v-toolbar>
-  
+
     <v-navigation-drawer app v-model="drawer" class="primary">
       <v-list>
         <v-list-tile v-for="link in links" :key="link.text" router :to="link.route">
@@ -41,6 +41,7 @@ export default {
         { icon: 'home', text: 'Home', route: '/' },
         { icon: 'accessible', text: 'Accessible Places', route: '/accessiblepoi' },
         { icon: 'fastfood', text: 'Restaurants', route: '/restaurants' },
+        { icon: 'done_all', text: 'Results', route: '/resultsn' },
       ]
     }
   }
