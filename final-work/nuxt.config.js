@@ -73,7 +73,7 @@ export default {
   ** Build configuration
   */
   build: {
-    transpile: ['vuetify/lib'],
+    transpile: ['vuetify/lib', /^vue2-google-maps($|\/)/],
     plugins: [new VuetifyLoaderPlugin()],
     loaders: {
       stylus: {

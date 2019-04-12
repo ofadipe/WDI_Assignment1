@@ -3,8 +3,17 @@
     <v-container grid-list-md>
       <v-layout row wrap>
         <v-flex xs12>
+ <v-img
+          style="color: white"
+          gradient="to top right, rgba(100,115,201,.33), rgba(25,32,72,.7)"
+              height="300"
+              :src="object.picture.url"
+            >
           <v-layout row wrap>
+
             <v-flex xs12>
+
+
               <h1>{{object.name}}</h1>
             </v-flex>
             <v-flex xs6>{{object.summary}}</v-flex>
@@ -12,6 +21,8 @@
               <a :href="object.website_url" target="_blank">Website: {{object.website_url}}</a>
             </v-flex>
           </v-layout>
+
+              </v-img>
         </v-flex>
         <v-flex xs6>
           <h2>About {{object.name}}</h2>
@@ -45,29 +56,20 @@
         </v-flex>
         <v-flex xs12>
           <GmapMap
-            :center="{lat:10, lng:10}"
-            :zoom="7"
+            :center="{lat:object.location.geocode.lat, lng:object.location.geocode.lng}"
+            :zoom="15"
             map-type-id="terrain"
-            style="width: 500px; height: 300px"
+            style="width: 100%; height: 500px"
           >
             <GmapMarker
-              :key="index"
-              v-for="(m, index) in markers"
-              :position="m.position"
+              :position="{lat:object.location.geocode.lat, lng:object.location.geocode.lng}"
               :clickable="true"
-              :draggable="true"
-              @click="center=m.position"
             />
           </GmapMap>
         </v-flex>
       </v-layout>
     </v-container>
-    {{object}}
-    <img
-      :src="object.picture.url"
-      class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
-      alt
-    >
+
   </div>
 </template>
 <style>
@@ -76,36 +78,51 @@
 export default {
   data() {
     return {
-      object: null
+      object: null,
+      weather: null
+    };
+  },
+  methods: {
+    getWeather() {
+      this.$axios.get('https://api.openweathermap.org/data/2.5/forecast?lat=' + this.object.location.geocode.lat + '&lon=' + this.object.location.geocode.lng + '&APPID=03bc9df889d6cf24f69ebed9ace4d15b')
+      .then(response => {
+        console.log("Weather below");
+        console.log(response)
+      })
+      .catch(error => {
+        console.log(error)
+      })
     }
   },
   mounted() {
     // process.env.variablename for environment variables output
-    console.log('The API key is: ' + process.env.API_KEY)
+    console.log("The API key is: " + process.env.API_KEY);
 
     // Provide Authroization Header that is a bearer
     const config = {
-      headers: { Authorization: 'bearer ' + process.env.API_KEY }
-    }
+      headers: { Authorization: "bearer " + process.env.API_KEY }
+    };
     // Create the axios request including the headers
     this.$axios
       .get(
         // The ID paramater gets taken from the localhost URL and put to our API Search
-        'https://api.autoura.com/api/stops/get?stop_id=' +
+        "https://api.autoura.com/api/stops/get?stop_id=" +
           this.$route.params.id,
         config
       )
       .then(response => {
         // Code works
-        this.object = response.data.response[0]
-
-        console.log(response)
+        this.object = response.data.response[0];
+        this.getWeather();
+        console.log(response);
       })
       .catch(error => {
         // Code doesnt work
-        console.log(error)
-      })
+        console.log(error);
+      });
+
+
   }
-}
+};
 </script>
 

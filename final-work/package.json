@@ -1,33 +1,35 @@
 {
-  "name": "autoura",
+  "name": "final-work",
   "version": "1.0.0",
-  "description": "WDI Assignment creating web application for Autoura using Nuxt",
+  "description": "My sensational Nuxt.js project",
   "author": "Oluwaseun Fadipe",
   "private": true,
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "test": "jest"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.4.3",
     "@nuxtjs/axios": "^5.3.6",
-    "axios": "^0.18.0",
-    "core-js": "^3.0.1",
+    "@nuxtjs/pwa": "^2.6.0",
     "cross-env": "^5.2.0",
     "node-sass": "^4.11.0",
     "nuxt": "^2.4.0",
     "sass-loader": "^7.1.0",
+    "vue2-google-maps": "^0.10.6",
     "vuetify": "^1.5.5",
     "vuetify-loader": "^1.2.1"
   },
   "devDependencies": {
-    "eslint-config-prettier": "^4.1.0",
-    "eslint-plugin-prettier": "^3.0.1",
+    "@vue/test-utils": "^1.0.0-beta.27",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "^24.1.0",
+    "jest": "^24.1.0",
     "nodemon": "^1.18.9",
-    "prettier": "^1.16.4",
     "stylus": "^0.54.5",
-    "stylus-loader": "^3.0.2"
+    "stylus-loader": "^3.0.2",
+    "vue-jest": "^3.0.3"
   }
 }
