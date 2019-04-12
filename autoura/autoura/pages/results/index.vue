@@ -4,7 +4,7 @@
     Pick a type:
     <!-- v-on:change, when a option is changed, we run changeSearch() function -->
     <select name id v-model="searchPick" v-on:change="changeSearch()">
-      <option value="accom">Accomodation</option>
+      <option value="accom">Accomodationn</option>
       <option value="food">Food</option>
       <option value="event">Event</option>
       <option value="attraction">Attraction</option>

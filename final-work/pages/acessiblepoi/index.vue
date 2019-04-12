@@ -3,7 +3,7 @@
     <!-- Loop through each result and create an nuxt-link that goes to /results/ID  -->
     Pick a type:
     <select name id v-model="searchPick" v-on:change="changeSearch()">
-      <option value="accom">Accomodation</option>
+      <option value="accom">Accomodationn</option>
       <option value="food">Food</option>
       <option value="event">Event</option>
       <option value="attraction">Attraction</option>
