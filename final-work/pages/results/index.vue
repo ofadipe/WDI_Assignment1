@@ -2,26 +2,34 @@
   <div class="results">
     <!-- Loop through each result and create an nuxt-link that goes to /results/ID  -->
     Pick a type:
+    <v-combobox
+      v-on:change="changeSearch()"
+      v-model="searchPick"
+      :items="types"
+      item-text="label"
+      label="Select a favorite activity or create a new one"
+    >
+      <template slot="item" slot-scope="data">
+        <v-icon>{{data.item.icon}}</v-icon>
+        {{data.item.label}}
+      </template>
+    </v-combobox>
+
     <!-- v-on:change, when a option is changed, we run changeSearch() function -->
-    <select name id v-model="searchPick" v-on:change="changeSearch()">
-      <option value="accom">Accomodation</option>
-      <option value="food">Food</option>
-      <option value="event">Event</option>
-      <option value="attraction">Attraction</option>
-      <option value="poi">Point of Interest</option>
-      <option value="tour">Tour</option>
-    </select>
+    <!-- <select name id v-model="searchPick" v-on:change="changeSearch()">
+
     <!-- Wheel Chair Checkbox, v-model to wheelChair data that is set to false by default, when clicked it will run changeSearch()-->
 
-    <label for="checkboxPets"> Pets </label>
-    <!-- This is the checkbox for pets -->
+    <!-- <label for="checkboxPets"> Pets </label>
+  This is the checkbox for pets
     <input
     type="checkbox"
     id="checkboxPets"
     v-model="pets"
     v-on:change="changeSearch()"
-    >
-        <label for="checkboxWheelChair">Wheelchair</label>
+    >-->
+    <label for="checkboxWheelChair">
+        <v-icon>accessible</v-icon>Wheelchair</label>
     <!-- v-on:change, when a option is changed, we run changeSearch() function -->
     <input
       type="checkbox"
@@ -49,7 +57,11 @@
             <v-layout row wrap>
               <v-flex v-for="result in results" v-bind:key="result.stop_id">
                 <v-card>
-                  <v-img height="200px" :src="result.picture.url" v-if="result.picture.url !== null">
+                  <v-img
+                    height="200px"
+                    :src="result.picture.url"
+                    v-if="result.picture.url !== null"
+                  >
                     <v-container fill-height fluid pa-2>
                       <v-layout fill-height>
                         <v-flex xs12 align-end flexbox>
@@ -63,7 +75,7 @@
                     <v-spacer></v-spacer>
                     <!-- v if to check result in for loop has wheelchair set to true, if so show icon -->
                     <v-icon v-if="result.accessibility.wheelchair == true">accessible</v-icon>
-                    <v-btn :to="'/results/'+searchPick +'/' + result.stop_id" icon>
+                    <v-btn :to="'/results/'+searchPick.search +'/' + result.stop_id" icon>
                       <v-icon>arrow_right_alt</v-icon>
                     </v-btn>
                   </v-card-actions>
@@ -88,29 +100,66 @@ export default {
   data() {
     return {
       results: null,
-      searchPick: 'accom',
-      groupPick: 'friends',
+      searchPick: {
+          search: "food",
+          label: "Food",
+          icon: "fastfood"
+        },
+      groupPick: "friends",
       loading: false,
       wheelChair: false,
-      pets: false
-    }
+      pets: false,
+      types: [
+        {
+          search: "accom",
+          label: "Accomdation",
+          icon: "home"
+        },
+        {
+          search: "poi",
+          label: "Point of Interest",
+          icon: "home"
+        },
+        {
+          search: "attraction",
+          label: "Attraction",
+          icon: "home"
+        },
+        {
+          search: "event",
+          label: "Event",
+          icon: "home"
+        },
+        {
+          search: "food",
+          label: "Food",
+          icon: "fastfood"
+        },
+        {
+          search: "tour",
+          label: "Tour",
+          icon: "work_outline"
+        }
+      ]
+    };
   },
+
   methods: {
     changeSearch() {
-      this.loading = true
+      this.loading = true;
       const config = {
-        headers: { Authorization: 'bearer ' + process.env.API_KEY }
-      }
+        headers: { Authorization: "bearer " + process.env.API_KEY }
+      };
       // Create the axios request including the headerse
 
       let link =
-        'https://api.autoura.com/api/stops/search?group_context=' +
+        "https://api.autoura.com/api/stops/search?group_context=" +
         this.groupPick +
-        '&stop_types=' +
-        this.searchPick
+        "&stop_types=" +
+        this.searchPick.search;
 
       if (this.wheelChair) {
-        link = link + '&wheelchair=true'
+        link = link + "&wheelchair=true";
       }
 
       // Search Requestat
@@ -118,30 +167,32 @@ export default {
         .get(link, config)
         .then(response => {
           // Code works
-          this.loading = false
+          this.loading = false;
           // We get the array and assign it to results data
-          this.results = response.data.response
+          this.results = response.data.response;
 
-          if(this.pets == true) {
+          if (this.pets == true) {
             // do the this.results.filter stuff here.
             // might work?
             // we assume if they allow pets it will be true. but check their data by doing more postman and see if you can find one that isnt unknown.ok
-          this.results = this.results.filter(result => result.pets.accept == true)
+            this.results = this.results.filter(
+              result => result.pets.accept == true
+            );
           }
 
-          console.log(response)
+          console.log(response);
         })
         .catch(error => {
           // Code doesnt work
-          console.log(error)
-        })
+          console.log(error);
+        });
     }
   },
   mounted() {
     // Page loads, we run the search based on default values.
-    this.changeSearch()
+    this.changeSearch();
   }
-}
+};
 </script>
 <style lang="scss">
 .lds-facebook {
@@ -182,16 +233,27 @@ export default {
   }
 }
 
-
 .v-card .v-image__image:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
- background: -moz-linear-gradient(top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%);
-background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%);
-background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%);
-    }
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: -moz-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0.65) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  background: -webkit-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0.65) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.65) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
 </style>
