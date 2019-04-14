@@ -39,8 +39,6 @@ export default {
       drawer: false,
       links: [
         { icon: 'home', text: 'Home', route: '/' },
-        { icon: 'accessible', text: 'Accessible Places', route: '/accessiblepoi' },
-        { icon: 'fastfood', text: 'Restaurants', route: '/restaurants' },
         { icon: 'done_all', text: 'Results', route: '/results' },
       ]
     }
