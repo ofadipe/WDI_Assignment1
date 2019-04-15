@@ -5,12 +5,12 @@
         <v-flex xs12 class="">
  <v-img
           style="color: white"
-          gradient="to right, rgb(142, 68, 173,0.5), rgb(192, 57, 43,1.0e)"
+          gradient="to right, rgb(142, 68, 173,0.5), rgb(192, 57, 43,1.0)"
               height="300"
               :src="object.picture.url"
             >
           <v-layout row wrap class="mx-4 mb-4 mt-4">
-            <v-flex xs12 >background: #c0392b;  /* fallback for old browsers */
+            <v-flex xs12 >
               <h1>{{object.name}}</h1>
             </v-flex>
             <v-flex xs4>{{object.summary}}</v-flex>

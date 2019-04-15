@@ -7,7 +7,19 @@
       v-model="searchPick"
       :items="types"
       item-text="label"
-      label="Select a favorite activity or create a new one"
+      label="Select Your Stop"
+    >
+      <template slot="item" slot-scope="data">
+        <v-icon>{{data.item.icon}}</v-icon>
+        {{data.item.label}}
+      </template>
+    </v-combobox>Pick a people group:
+    <v-combobox
+      v-on:change="changeSearch()"
+      v-model="groupPick"
+      :items="group_context"
+      item-text="label"
+      label="Select Your People"
     >
       <template slot="item" slot-scope="data">
         <v-icon>{{data.item.icon}}</v-icon>
@@ -16,7 +28,7 @@
     </v-combobox>
 
     <!-- v-on:change, when a option is changed, we run changeSearch() function -->
-    <!-- <select name id v-model="searchPick" v-on:change="changeSearch()">
+    <!-- <select name id v-model="searchPick" v-on:change="changeSearch()"-->
 
     <!-- Wheel Chair Checkbox, v-model to wheelChair data that is set to false by default, when clicked it will run changeSearch()-->
 
@@ -29,7 +41,8 @@
     v-on:change="changeSearch()"
     >-->
     <label for="checkboxWheelChair">
-        <v-icon>accessible</v-icon>Wheelchair</label>
+      <v-icon>accessible</v-icon>Wheelchair
+    </label>
     <!-- v-on:change, when a option is changed, we run changeSearch() function -->
     <input
       type="checkbox"
@@ -105,6 +118,11 @@ export default {
           label: "Food",
           icon: "fastfood"
         },
+      group_context:{
+          search: "friends",
+          label: "Friends",
+          icon: "home"
+        },
       groupPick: "friends",
       loading: false,
       wheelChair: false,
@@ -118,17 +136,17 @@ export default {
         {
           search: "poi",
           label: "Point of Interest",
-          icon: "home"
+          icon: "beach_access"
         },
         {
           search: "attraction",
           label: "Attraction",
-          icon: "home"
+          icon: "whatshot"
         },
         {
           search: "event",
           label: "Event",
-          icon: "home"
+          icon: "location_city"
         },
         {
           search: "food",
@@ -138,12 +156,43 @@ export default {
         {
           search: "tour",
           label: "Tour",
-          icon: "work_outline"
+          icon: "public"
         }
+      ],
+      group_context: [
+        {
+          search: "friends",
+          label: "Friends",
+          icon: "home"
+        },
+        {
+          search: "solo",
+          label: " Invididual ",
+          icon: "beach_access"
+        },
+        {
+          search: "couple",
+          label: "Couple",
+          icon: "whatshot"
+        },
+        {
+          search: "teenagers",
+          label: "Teenagers",
+          icon: "location_city"
+        },
+        {
+          search: "groups",
+          label: "Groups",
+          icon: "fastfood"
+        },
+        {
+          search: "party",
+          label: "Party",
+          icon: "public"
+        },
       ]
-    };
+    }
   },
-
   methods: {
     changeSearch() {
       this.loading = true;
@@ -154,7 +203,7 @@ export default {
 
       let link =
         "https://api.autoura.com/api/stops/search?group_context=" +
-        this.groupPick +
+        this.groupPick.search +
         "&stop_types=" +
         this.searchPick.search;
 
@@ -192,7 +241,8 @@ export default {
     // Page loads, we run the search based on default values.
     this.changeSearch();
   }
-};
+}
+
 </script>
 <style lang="scss">
 .lds-facebook {
@@ -257,3 +307,76 @@ export default {
   );
 }
 </style>
+
+
+
+
+ groupPick: "friends",
+      loading: false,
+      wheelChair: false,
+      pets: false,
+      types: [
+        {
+          search: "accom",
+          label: "Accomdation",
+          icon: "home"
+        },
+        {
+          search: "poi",
+          label: "Point of Interest",
+          icon: "beach_access"
+        },
+        {
+          search: "attraction",
+          label: "Attraction",
+          icon: "whatshot"
+        },
+        {
+          search: "event",
+          label: "Event",
+          icon: "location_city"
+        },
+        {
+          search: "food",
+          label: "Food",
+          icon: "fastfood"
+        },
+        {
+          search: "tour",
+          label: "Tour",
+          icon: "public"
+        },
+
+        group_context [
+        {
+          search: "accom",
+          label: "Accomdation",
+          icon: "home"
+        },
+        {
+          search: "poi",
+          label: "Point of Interest",
+          icon: "beach_access"
+        },
+        {
+          search: "attraction",
+          label: "Attraction",
+          icon: "whatshot"
+        },
+        {
+          search: "event",
+          label: "Event",
+          icon: "location_city"
+        },
+        {
+          search: "food",
+          label: "Food",
+          icon: "fastfood"
+        },
+        {
+          search: "tour",
+          label: "Tour",
+          icon: "public"
+        }
+        ],
+  },
