@@ -10,10 +10,9 @@
         </v-toolbar-title>
         <v-spacer></v-spacer>
 
-        <v-btn flat folor="grey">
-            <span>Log Out</span>
-            <v-icon right>exit_to_app</v-icon>
-        </v-btn>
+        <v-toolbar-title>
+          <span> Web Design for the Industry</span>
+        </v-toolbar-title>
     </v-toolbar>
 
     <v-navigation-drawer app v-model="drawer" class="primary">

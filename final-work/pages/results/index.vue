@@ -1,7 +1,12 @@
 <template>
   <div class="results">
+
+    <div class="welcome mt-4">
+      <h1 class="display-3 text-lg-center blue white--text"> This is Autoura </h1>
+      <p3 class=""> This is the Autoura page, use the drop down to fliter the stops and type of people allowed. Also for users with in wheelchairs, check the accessiblity toggle bottom to show which places are accessible. (If you do not want to use the toggle, the accessible places have a wheelchair symbol on the card). Once you have found somewhere click on the arrow --> on the card to find out more information!</p3>
+    </div>
     <!-- Loop through each result and create an nuxt-link that goes to /results/ID  -->
-    Pick a type:
+   <v-spacer></v-spacer>
     <v-combobox
       v-on:change="changeSearch()"
       v-model="searchPick"
@@ -13,7 +18,7 @@
         <v-icon>{{data.item.icon}}</v-icon>
         {{data.item.label}}
       </template>
-    </v-combobox>Pick a people group:
+    </v-combobox>
     <v-combobox
       v-on:change="changeSearch()"
       v-model="groupPick"
@@ -51,7 +56,9 @@
       v-on:change="changeSearch()"
     >
 
+<!-- Originally was going to do the drop down like this, but wanted the icons in the drop down -->
     <!-- v-on:change, when a option is changed, we run changeSearch() function -->
+    <!--
     <select name id v-model="groupPick" v-on:change="changeSearch()">
       <option value="friends">Friends</option>
       <option value="solo">Individual</option>
@@ -61,6 +68,7 @@
       <option value="Group">Groups</option>
       <option value="party">Party</option>
     </select>
+    -->
 
     <template v-if="results!==null ">
       <template v-if="results.length == 0">Sorry there were no results</template>
@@ -163,17 +171,17 @@ export default {
         {
           search: "friends",
           label: "Friends",
-          icon: "home"
+          icon: "group_add"
         },
         {
           search: "solo",
           label: " Invididual ",
-          icon: "beach_access"
+          icon: "person"
         },
         {
           search: "couple",
           label: "Couple",
-          icon: "whatshot"
+          icon: "people"
         },
         {
           search: "teenagers",
@@ -188,7 +196,7 @@ export default {
         {
           search: "party",
           label: "Party",
-          icon: "public"
+          icon: "party_mode"
         },
       ]
     }
@@ -308,75 +316,3 @@ export default {
 }
 </style>
 
-
-
-
- groupPick: "friends",
-      loading: false,
-      wheelChair: false,
-      pets: false,
-      types: [
-        {
-          search: "accom",
-          label: "Accomdation",
-          icon: "home"
-        },
-        {
-          search: "poi",
-          label: "Point of Interest",
-          icon: "beach_access"
-        },
-        {
-          search: "attraction",
-          label: "Attraction",
-          icon: "whatshot"
-        },
-        {
-          search: "event",
-          label: "Event",
-          icon: "location_city"
-        },
-        {
-          search: "food",
-          label: "Food",
-          icon: "fastfood"
-        },
-        {
-          search: "tour",
-          label: "Tour",
-          icon: "public"
-        },
-
-        group_context [
-        {
-          search: "accom",
-          label: "Accomdation",
-          icon: "home"
-        },
-        {
-          search: "poi",
-          label: "Point of Interest",
-          icon: "beach_access"
-        },
-        {
-          search: "attraction",
-          label: "Attraction",
-          icon: "whatshot"
-        },
-        {
-          search: "event",
-          label: "Event",
-          icon: "location_city"
-        },
-        {
-          search: "food",
-          label: "Food",
-          icon: "fastfood"
-        },
-        {
-          search: "tour",
-          label: "Tour",
-          icon: "public"
-        }
-        ],
-  },
