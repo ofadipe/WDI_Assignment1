@@ -1,4 +1,13 @@
 # Web Design for the Industry Autouria
+> SWD600 Project Report (Live Brief) & Artefact
+
+
+> **Check out the site here:**
+
+
+> **<https://wdi-autoura-assignment.firebaseapp.com>**
+
+
 
 
 ## Background
@@ -25,11 +34,14 @@ To display the results, I decided to use the cards layout, by using Vuetify’s 
 The first thing that was done was create a basic card layout, which I got from the documentation, and then replaced the image with result.picture.url from the Autoura API (this will show the images of the poi). 
 
 
-`<v-img
-                    height="200px"
-                    :src="result.picture.url"
-                    v-if="result.picture.url !== null">
-`
+```
+ < v-img
+    height="200px"
+    :src="result.picture.url"
+    v-if="result.picture.url !== null
+ >
+                    
+```
 
 
 However, as you can see in the code above, if there is no image then it will = null and nothing will show.
@@ -52,15 +64,17 @@ As you can see if the result accessibility is true then display the accessible s
 
 The button is complimented by the following code in the script section
 
-`let link =
+```
+   let link =
         "https://api.autoura.com/api/stops/search?group_context=" +
         this.groupPick.search +
-       "&stop_types=" +
-        this.searchPick.search;`
+        "&stop_types=" +
+        this.searchPick.search;
 
       if (this.wheelChair) {
         link = link + "&wheelchair=true";
       }
+```
 
 
 This is what the end result for the cards looked like
@@ -152,37 +166,42 @@ At this point, I needed to get an API key to put *vue-google-maps* js file which
 
 You can see in the following code how it is done. (Because of privacy reasons I have replaced the actual api key with xxxxxxxx). 
 
-`import Vue from 'vue'
-	import * as VueGoogleMaps from 'vue2-google-maps'
-`
-`Vue.use(VueGoogleMaps, {
+```
+import Vue from 'vue'
+import * as VueGoogleMaps from 'vue2-google-maps'
+
+Vue.use(VueGoogleMaps, {
   load: {
-    key: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-`
+    key: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx,
+  }
+})
+
+```
 
 
 In the actual _id.vue (the page with further information of selected), all I needed to do was this:
 
-`<GmapMap
+```
+<GmapMap
             :center="{lat:object.location.geocode.lat, lng:object.location.geocode.lng}"
             :zoom="15"
             map-type-id="terrain"
             style="width: 100%; height: 500px"
           >
-`
-`            <GmapMarker
+  <GmapMarker
               :position="{lat:object.location.geocode.lat, lng:object.location.geocode.lng}"
               :clickable="true"
             />
-          </GmapMap>
-`
+  </GmapMap>
+```
 
 Which was similar to the quickstart on the npm vue2-leaflet-map, however for the position I needed to get the location of the POI from the API.
 
 ### Weather API
 In addition to using the location from the API for the mapping, I thought instead of using firebase database, because I did not see how it fitted into my vision. I used [OpenWeatherMap’s Weather API](https://openweathermap.org/api). I used this to show the weather of the selected POI. The weather API uses axios and then uses the lon and lat from the Autoura API. 
 
-`getWeather() {
+```
+getWeather() {
       this.$axios.get('https://api.openweathermap.org/data/2.5/weather?lat=' + this.object.location.geocode.lat + '&lon=' + this.object.location.geocode.lng + '&APPID=03bc9df889d6cf24f69ebed9ace4d15b')
       .then(response => {
         console.log("Weather below");
@@ -192,18 +211,21 @@ In addition to using the location from the API for the mapping, I thought instea
       .catch(error => {
         console.log(error)
       })
-`
+
+```
 
 The weather icons were done doing the following:
 
-`<div class="weather">
+```
+<div class="weather">
                   <img
                     :src="'http://openweathermap.org/img/w/' + this.weather.weather[0].icon + '.png'"
                     alt
                   >
                   {{this.weather.weather[0].main}}
-                </div>
-`
+</div>
+
+```
 
 As you can see in the code, I made a div tag tag with a class called weather. Within that I made an img tag. This is where the image for the weather appears using the URL and then it gets the weather data from the this.weather which was made in the script section. It then grabs the weather icon corresponding to the weather for example if it is raining ‘09d’ .png will appear (which is why the png extension is at the end). For more details about the weather icons please check out the documentation [here](https://openweathermap.org/weather-conditions)
 
@@ -219,12 +241,12 @@ In addition to this I tested it on my mobile and as you can see in the shots bel
 
 After this I did official testing using Lighthouse PWA Analysis Tool which you can find out more about [here](https://developers.google.com/web/ilt/pwa/lighthouse-pwa-analysis-tool).
 Here are the official results from the test.
-![Lighouse Results](wdi_screenshots/screenshot30.png)
+![Lighthouse Results](wdi_screenshots/screenshot30.png)
 
 Officially it is a Progressive Web App, and if you want to see the full results please check the lighthouse folder which has a HTML and JSON files with the full results.  
 
 ### GTmetrix Test Results
-I used GTmetrix to provide insight on how well the website loads and provides actionable recommendations on how to optimise it.wdi_screenshots/screenshot30.png
+I used GTmetrix to provide insight on how well the website loads and provides actionable recommendations on how to optimise it.
 
 After going through the results, I was surprised by the results and the main issue was the total page size which was a bit above average. One of the recommendations was to optimise the images. The full results of this can be found in the GitHub repo
 
