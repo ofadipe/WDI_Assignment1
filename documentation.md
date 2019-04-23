@@ -15,7 +15,7 @@ As shown in the image above I created two dropdowns using Vuetify’s combobox w
 The main reason I chose to do the dropdown using the combobox as opposed to using the normal option HTML attribute was because I wanted to add icons next to the label, and this was not possible using that technique. 
 
 This was the end outcome 
-![End outcome](/Users/iamshadderz/Documents/Uni 2018-19/WDI Assignment/WDI_Assignment1/wdi_screenshots/screenshot1.png)
+![End outcome](wdi_screenshots/screenshot1.png)
 
 
 ### Cards
