@@ -1,4 +1,5 @@
-# Web Design for the Industry Autouria
+# Documentation
+> ## Web Design for the Industry Autouria
 > SWD600 Project Report (Live Brief) & Artefact
 
 
@@ -14,7 +15,7 @@
 This Autouria website allows users to see different &quot;stops&quot; such as food and drink, and events. Users can also sort it by group context. Alongside this there is a toggle button that allows you to toggle accessible places.
 
 ## Homepage
-
+In this section I will discuss the contents of the homepage.
 ### Dropdown
 
 ![Drop Down with toggle shown](wdi_screenshots/Screenshot99.png)
@@ -23,7 +24,7 @@ As shown in the image above I created two dropdowns using Vuetify’s combobox w
 The main reason I chose to do the dropdown using the combobox as opposed to using the normal option HTML attribute was because I wanted to add icons next to the label, and this was not possible using that technique. 
 
 This was the end outcome 
-![End outcome](wdi_screenshots/screenshot1.png)
+![Dropdown with Icon](wdi_screenshots/screenshot1.png)
 
 
 ### Cards
@@ -86,6 +87,7 @@ This is what the end result for the cards looked like
 When the user clicks on the arrow button on the card it takes you to another page which provides further information such as their website, about the poi, map and weather. 
 
 ### Header
+In this section I discussed features I added in the header such as the weather, url and header image.
 #### Header Image
 For the header image, I used the images provided in the Autoura API, but to allow the text to be visible I added a gradient by using an Vuetify component called gradient which you can find the documentation for on this page [here](https://vuetifyjs.com/en/components/images#api).
 
@@ -105,16 +107,17 @@ On the left side of the page further information about the poi (Autouria provide
 
 On the right side however is where things become more interesting. The right side of this section provides a video from YouTube or Vimeo or if the poi does not provide either it will show an image. When looking through the data provided from the Autouria API I noticed that some of them had videos attached to them. When I investigated further, I noticed that the videos were either from YouTube or Vimeo, so I had to figure out a way to show both. But the first challenge was how I was going to show one. YouTube was embedded like this:
 
-`iframe
+```
+<iframe
             v-if="object.video.platform == 'youtube'"
             width="560"
             height="315"
             :src="'https://www.youtube.com/embed/' + object.video.id"
             frameborder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
-`
+            allowfullscreen>
+</iframe>
+```
 
 The first thing you will notice is the V-if which is essentially an IF statement in which you can find the documentation for [here](https://vuejs.org/v2/guide/conditional.html#v-if).
 
@@ -152,7 +155,8 @@ However what in the firebase.json had to be modified since I used Nuxt for this 
 
 `{ "hosting": { "public": "./dist", "rewrites": [ { "source": "**", "destination": "/index.html" } ] } } `
 
-The reason why I used Firebase was for two reasons, firstly I have never used firebase, so I thought this was a good opportunity. It fairly straightforward (well normally) and everything is done using CLI tool. It is also secured and fast, and similar to GitHub you can commits deployments and roll back to previous versions
+The reason why I used Firebase was for two reasons, firstly I have never used firebase, so I thought this was a good opportunity. It fairly straightforward (well normally) and everything is done using CLI tool. It is also secured and fast, and similar to GitHub you can commits deployments and roll back to previous versions which you can see in the screenshot below
+![Firebase Deployment](wdi_screenshots/frebase.png)
 
 ###  CSS Framework
 Vuetify is a component framework for Vue.js was used for this project. It is based on the Material Design. One of the reasons this is being used is because you can easily use Google’s material design icons, and because it built for Vue thought it would be a good opportunity to use it. Besides that, Vuetify has pwa support too.
@@ -223,7 +227,7 @@ The weather icons were done doing the following:
                     alt
                   >
                   {{this.weather.weather[0].main}}
-</div>
+~</div>
 
 ```
 
@@ -243,12 +247,12 @@ After this I did official testing using Lighthouse PWA Analysis Tool which you c
 Here are the official results from the test.
 ![Lighthouse Results](wdi_screenshots/screenshot30.png)
 
-Officially it is a Progressive Web App, and if you want to see the full results please check the lighthouse folder which has a HTML and JSON files with the full results.  
+Officially it is a Progressive Web App, and if you want to see the full results please check the [lighthouse folder](lighthouse_results) which has a HTML and JSON files with the full results.  
 
 ### GTmetrix Test Results
 I used GTmetrix to provide insight on how well the website loads and provides actionable recommendations on how to optimise it.
 
-After going through the results, I was surprised by the results and the main issue was the total page size which was a bit above average. One of the recommendations was to optimise the images. The full results of this can be found in the GitHub repo
+After going through the results, I was surprised by the results and the main issue was the total page size which was a bit above average. One of the recommendations was to optimise the images. The full results of this can be found in the GitHub repo [here](GTmetrix-report-wdi-autoura-assignment.firebaseapp.com-20190422T100422-F3DI4P33-full.pdf)
 
 ### Loading Animation
 I added a loading animation which I got from <https://loading.io/css/> which appears on the home page. Which you may notice briefly when you first load the home page.  
@@ -260,3 +264,5 @@ Admittedly the mobile web application was not as good as I wanted it to be, espe
 I would have also done some unit testing (although there is a test automatically created which is found in the test folder), I would have personally wanted to create a few tests myself. 
 
 I originally was going to have a splash page but decided to focus on features such as weather API and PWA, but in the future I will add a splash page.
+
+Overall I enjoyed this project and I tried to challenge myself, I learnt a lot throughout such as NuxtJS, VueJS, Vuetify, Firebase among other things. 

@@ -1,6 +1,6 @@
 # Web Design for the Industry
 
-# **SWD600 Project Report (Live Brief) &amp; Artefact**
+> **SWD600 Project Report (Live Brief) &amp; Artefact**
 
 
 
@@ -8,13 +8,15 @@
 
 This repo is for my WDI assignment for one of my assignments for university in which I had to create a website using the API from Autoura which can be found [here](https://www.autoura.com/docs/api)
 
-All of the work will be found in the folder final-work, which will have a readme file explaining how to run the project locally.
+All of the work will be found in the folder final-work, which will have a readme file explaining how to run the project locally which you can find [here](final-work/README.md)
 
-For the Lighthouse Tool results please check out the folder Lighthouse folder for both the HTML and the JSON files featuring the full results.
+For the Lighthouse Tool results please check out the folder Lighthouse folder for both the HTML and the JSON files featuring the full results click [here](lighthouse_results)
+
+Lighthouse Results
 
 # What is the documentation file?
 
-The documentation file is documentation on how I created this project, and justification on choices made throughout this project.
+The documentation file is documentation on how I created this project, and justification on choices made throughout this project. You can find it here
 
 # Website
 
