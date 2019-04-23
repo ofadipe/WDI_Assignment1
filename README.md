@@ -16,7 +16,7 @@ Lighthouse Results
 
 # What is the documentation file?
 
-The documentation file is documentation on how I created this project, and justification on choices made throughout this project. You can find it here
+The documentation file is documentation on how I created this project, and justification on choices made throughout this project. You can find it [here](documentation.md)
 
 # Website
 
