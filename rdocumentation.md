@@ -6,15 +6,16 @@ This Autouria website allows users to see different &quot;stops&quot; such as fo
 
 ## Homepage
 
+
 ### Dropdown
 
-![Drop Down with toggle shown](wdi_screenshots/Screenshot99.png)
+![](/Users/iamshadderz/Documents/Uni 2018-19/WDI Assignment/WDI_Assignment1/wdi_screenshots/Screenshot99.png)
 As shown in the image above I created two dropdowns using Vuetify’s combobox which the documentation for this can be found [here](https://vuetifyjs.com/en/components/combobox#combobox)
 
 The main reason I chose to do the dropdown using the combobox as opposed to using the normal option HTML attribute was because I wanted to add icons next to the label, and this was not possible using that technique. 
 
 This was the end outcome 
-![End outcome](wdi_screenshots/screenshot1.png)
+![End outcome](/Users/iamshadderz/Documents/Uni 2018-19/WDI Assignment/WDI_Assignment1/wdi_screenshots/screenshot1.png)
 
 
 ### Cards
@@ -32,8 +33,8 @@ The first thing that was done was create a basic card layout, which I got from t
 `
 
 
-However, as you can see in the code above, if there is no image then it will = null and nothing will show.
-Within the `<v-container>`there is a `<span>`which is where the following is:
+However, as you can see in the code above, if there is no image then it will = null and nothing will show. 
+Within the `<v-container> `there is a `<span> `which is where the following is:
 `v-text="result.name"`
 
 
@@ -64,7 +65,7 @@ The button is complimented by the following code in the script section
 
 
 This is what the end result for the cards looked like
-![Card layout](wdi_screenshots/screenshot11.png)
+![Card layout](/Users/iamshadderz/Desktop/wdi_screenshots/screenshot11.png)
 
 
 
@@ -73,7 +74,7 @@ When the user clicks on the arrow button on the card it takes you to another pag
 
 ### Header
 #### Header Image
-For the header image, I used the images provided in the Autoura API, but to allow the text to be visible I added a gradient by using an Vuetify component called gradient which you can find the documentation for on this page [here](https://vuetifyjs.com/en/components/images#api).
+For the header image, I used the images provided in the Autoura API, but to allow the text to be visible I added a gradient by using an Vuetify component called gradient which you can find the documentation for on this page [here](https://vuetifyjs.com/en/components/images#api). 
 
 I used the website [uiGradients](https://uigradients.com/#Predawn) to create a gradient and then converted it into rgb. `style="color: white"
           gradient="to right, rgb(142, 68, 173,0.5), rgb(192, 57, 43,1.0)"
@@ -84,10 +85,10 @@ I used the website [uiGradients](https://uigradients.com/#Predawn) to create a g
 
 #### Other Header Information
 I added the name of the poi and the summary of the poi. These are shown on the left side of the header. On the right side however is where the weather is shown which I will go into more detail about how that was done later and the URL of the website which I got from the Autouria API. This was the end result 
-![Header Screenshot](wdi_screenshots/screenshot12.png)
+![Header Screenshot](/Users/iamshadderz/Desktop/wdi_screenshots/screenshot12.png)
 
 ### Main Body
-On the left side of the page further information about the poi (Autouria provided a summary and description information for each poi).
+On the left side of the page further information about the poi (Autouria provided a summary and description information for each poi). 
 
 On the right side however is where things become more interesting. The right side of this section provides a video from YouTube or Vimeo or if the poi does not provide either it will show an image. When looking through the data provided from the Autouria API I noticed that some of them had videos attached to them. When I investigated further, I noticed that the videos were either from YouTube or Vimeo, so I had to figure out a way to show both. But the first challenge was how I was going to show one. YouTube was embedded like this:
 
@@ -106,12 +107,12 @@ The first thing you will notice is the V-if which is essentially an IF statement
 
 As you can see in this random GET request, I did on Postman in video (the section circled), there under platform it says “youtube”. So, going back to the v-if statement video platform it’s saying if the video platform is youtube then embedder will show. As you can see in the source, it is it adds the ID after the https://www.youtube.com/embed/. A similar thing is how Vimeo video are embedded. The main thing to note with the Vimeo embedded video is that it uses a v-else-if statement which essentially is an else if statement. 
 
-![JSON Postman Screenshot](wdi_screenshots/screenshot13.png)
+![JSON Postman Screenshot](/Users/iamshadderz/Desktop/wdi_screenshots/screenshot13.png)
 
 As mentioned earlier if there are no videos, then an image will appear, which works the same as how the header works, just without the gradient on top of the images, and uses a v-else statement.  
 
 ## Methods
-In this section I will be discussing what methods I used for this project, most notably Nuxt.JS
+In this section I will be discussing what methids I used for this project, most notably Nuxt.JS
 
 ### Nuxt JS
 Nuxt JS is a Vue.js framework which essentially is Vue js on steroids. To read more about Vue check out their official document [here](https://nuxtjs.org/).
@@ -124,10 +125,10 @@ The reasons I chose to create this project using Nuxt are the following:
 * During the setup it allows you to easily choose the server, UI framework (such as Bootstrap) and testing framework (such as Jest) and gives you an option to add an axios module.
 * Gives you an option to make it pwa ready
 
-###  Postman
+###  Postman   
 Postman was used to run GET requests. This was one of the first things that was done to find out what information was available in the API data, this allowed me to plan out the rest of the website and what I would had done.   
 
-## Implementation
+## Implementation 
 ### Github
 GitHub was used throughout this project to make commits and track changes.
 
@@ -214,17 +215,17 @@ When setting up this project using Nuxt JS, it allows myself to make it pwa read
 It automatically changes the sizes of the icons dependent of the screen size. 
 
 In addition to this I tested it on my mobile and as you can see in the shots below, I can download it to the home screen. 
-![PWA screenshot 1](wdi_screenshots/57972764_433259670816687_6701556000161267712_n.jpg)
-![PWA screenshot 2](wdi_screenshots/58444401_2274081592834885_9111817627210088448_n.jpg)
+![PWA screenshot 1](/Users/iamshadderz/Desktop/wdi_screenshots/57972764_433259670816687_6701556000161267712_n.jpg)
+![PWA screenshot 2](/Users/iamshadderz/Desktop/wdi_screenshots/58444401_2274081592834885_9111817627210088448_n.jpg)
 
 After this I did official testing using Lighthouse PWA Analysis Tool which you can find out more about [here](https://developers.google.com/web/ilt/pwa/lighthouse-pwa-analysis-tool).
 Here are the official results from the test.
-![Lighouse Results](wdi_screenshots/screenshot30.png)
+![Lighouse Results](/Users/iamshadderz/Desktop/wdi_screenshots/screenshot30.png)
 
 Officially it is a Progressive Web App, and if you want to see the full results please check the lighthouse folder which has a HTML and JSON files with the full results.  
 
 ### GTmetrix Test Results
-I used GTmetrix to provide insight on how well the website loads and provides actionable recommendations on how to optimise it.wdi_screenshots/screenshot30.png
+I used GTmetrix to provide insight on how well the website loads and provides actionable recommendations on how to optimise it.
 
 After going through the results, I was surprised by the results and the main issue was the total page size which was a bit above average. One of the recommendations was to optimise the images. The full results of this can be found in the GitHub repo
 
@@ -237,4 +238,5 @@ This project was an interesting one, however admittedly the Autouria API was a b
 Admittedly the mobile web application was not as good as I wanted it to be, especially on the page which had more information about the selected POI, if I had more time, I would had made sure that it was responsive.
 I would have also done some unit testing (although there is a test automatically created which is found in the test folder), I would have personally wanted to create a few tests myself. 
 
-I originally was going to have a splash page but decided to focus on features such as weather API and PWA, but in the future I will add a splash page.
+I originally was going to have a splash page but decided to focus on features such as weather API and PWA, but in the future I will add a splash page. 
+
