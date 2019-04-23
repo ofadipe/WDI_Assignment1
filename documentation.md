@@ -9,7 +9,7 @@ This Autouria website allows users to see different &quot;stops&quot; such as fo
 
 ### Dropdown
 
-![Screenshot of Dropdown](/Users/iamshadderz/Desktop/wdi_screenshots/Screenshot 2019-04-16 at 19.29.55.png)
+![Screenshot of Dropdown](/wdi_screenshots/Screenshot 2019-04-16 at 19.29.55.png)
 As shown in the image above I created two dropdowns using Vuetify’s combobox which the documentation for this can be found [here](https://vuetifyjs.com/en/components/combobox#combobox)
 
 The main reason I chose to do the dropdown using the combobox as opposed to using the normal option HTML attribute was because I wanted to add icons next to the label, and this was not possible using that technique. 
@@ -216,4 +216,26 @@ It automatically changes the sizes of the icons dependent of the screen size.
 In addition to this I tested it on my mobile and as you can see in the shots below, I can download it to the home screen. 
 ![PWA screenshot 1](/Users/iamshadderz/Desktop/wdi_screenshots/57972764_433259670816687_6701556000161267712_n.jpg)
 ![PWA screenshot 2](/Users/iamshadderz/Desktop/wdi_screenshots/58444401_2274081592834885_9111817627210088448_n.jpg)
+
+After this I did official testing using Lighthouse PWA Analysis Tool which you can find out more about [here](https://developers.google.com/web/ilt/pwa/lighthouse-pwa-analysis-tool).
+Here are the official results from the test.
+![Lighouse Results](/Users/iamshadderz/Desktop/wdi_screenshots/screenshot30.png)
+
+Officially it is a Progressive Web App, and if you want to see the full results please check the lighthouse folder which has a HTML and JSON files with the full results.  
+
+### GTmetrix Test Results
+I used GTmetrix to provide insight on how well the website loads and provides actionable recommendations on how to optimise it.
+
+After going through the results, I was surprised by the results and the main issue was the total page size which was a bit above average. One of the recommendations was to optimise the images. The full results of this can be found in the GitHub repo
+
+### Loading Animation
+I added a loading animation which I got from <https://loading.io/css/> which appears on the home page. Which you may notice briefly when you first load the home page.  
+
+## Reflection
+This project was an interesting one, however admittedly the Autouria API was a bit buggy, and was not the best. There were many things I wanted to do with this API that I was not able to do. For example, I wanted to have a separate food and drink section, with checkboxes of different which allowed users to check what food types they want. However, that information was only available for one POI. 
+
+Admittedly the mobile web application was not as good as I wanted it to be, especially on the page which had more information about the selected POI, if I had more time, I would had made sure that it was responsive.
+I would have also done some unit testing (although there is a test automatically created which is found in the test folder), I would have personally wanted to create a few tests myself. 
+
+I originally was going to have a splash page but decided to focus on features such as weather API and PWA, but in the future I will add a splash page. 
 
