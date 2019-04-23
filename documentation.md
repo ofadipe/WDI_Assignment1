@@ -9,13 +9,14 @@ This Autouria website allows users to see different &quot;stops&quot; such as fo
 
 ### Dropdown
 
-![Screenshot of Dropdown](/wdi_screenshots/Screenshot 2019-04-16 at 19.29.55.png)
+![](/Users/iamshadderz/Documents/Uni 2018-19/WDI Assignment/WDI_Assignment1/wdi_screenshots/Screenshot99.png)
 As shown in the image above I created two dropdowns using Vuetify’s combobox which the documentation for this can be found [here](https://vuetifyjs.com/en/components/combobox#combobox)
 
 The main reason I chose to do the dropdown using the combobox as opposed to using the normal option HTML attribute was because I wanted to add icons next to the label, and this was not possible using that technique. 
 
 This was the end outcome 
-![End outcome of the dropdown with icons](/Users/iamshadderz/Desktop/wdi_screenshots/screenshot1.png)
+![End outcome](/Users/iamshadderz/Documents/Uni 2018-19/WDI Assignment/WDI_Assignment1/wdi_screenshots/screenshot1.png)
+
 
 ### Cards
 To display the results, I decided to use the cards layout, by using Vuetify’s card component which the documentation for can be found [here](https://vuetifyjs.com/en/components/cards#card).
