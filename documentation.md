@@ -258,11 +258,10 @@ After going through the results, I was surprised by the results and the main iss
 I added a loading animation which I got from <https://loading.io/css/> which appears on the home page. Which you may notice briefly when you first load the home page.  
 
 ## Reflection
-This project was an interesting one, however admittedly the Autouria API was a bit buggy, and was not the best. There were many things I wanted to do with this API that I was not able to do. For example, I wanted to have a separate food and drink section, with checkboxes of different which allowed users to check what food types they want. However, that information was only available for one POI. 
+This project was an interesting one, however, admittedly the Autouria API was a bit buggy, and was not the best. There were many things I wanted to do with this API that I was not able to do. For example, I wanted to have separate food and drink section, with checkboxes of different which allowed users to check what food types they want. However, that information was only available for one POI.
 
-Admittedly the mobile web application was not as good as I wanted it to be, especially on the page which had more information about the selected POI, if I had more time, I would had made sure that it was responsive.
-I would have also done some unit testing (although there is a test automatically created which is found in the test folder), I would have personally wanted to create a few tests myself. 
+Admittedly the mobile web application was not as good as I wanted it to be, especially on the page which had more information about the selected POI, if I had more time, I would have made sure that it was responsive. I would have also done some unit testing (although there is a test automatically created which is found in the test folder), I would have personally wanted to create a few tests myself.
 
-I originally was going to have a splash page but decided to focus on features such as weather API and PWA, but in the future I will add a splash page.
+I originally was going to have a splash page but decided to focus on features such as weather API and PWA, but in the future, I will add a splash page.
 
-Overall I enjoyed this project and I tried to challenge myself, I learnt a lot throughout such as NuxtJS, VueJS, Vuetify, Firebase among other things. 
+Overall I enjoyed this project and I tried to challenge myself, I learnt a lot throughout such as NuxtJS, VueJS, Vuetify, Firebase among other things.
